@@ -1,11 +1,13 @@
 ---
 - name: Prune docker images, volumes and containers
-  docker_prune:
+  community.docker.docker_prune:
     containers: true
     images: true
-    volumes: true
     images_filters:
-       dangling: false
+      dangling: false
+    networks: true
+    volumes: true
+    builder_cache: true
   register: prune_docker
 
 - name: Show image space reclaimed
